@@ -1,0 +1,33 @@
+# ---- Virtual envs ----
+.venv/
+env/
+venv/
+
+# ---- Byte-compiled / caches ----
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ---- Distribution / packaging ----
+build/
+dist/
+*.egg-info/
+
+# ---- Test artifacts ----
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ---- IDE / editor ----
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+
+# ---- Environment vars ----
+.env
+.env.*      # e.g. .env.local, .env.production
