@@ -1,11 +1,22 @@
-## setup virtual env
-`python3 -m venv .venv`
+# AI Agent: Network Operations and Troubleshooting (MacOS)
 
-## activate virtual env
-`source .venv/bin/activate`
 
-## install deps
-`pip install -r requirements.txt`
+### Setup Virtual Environment
+```bash
+python3 -m venv .venv
+```
 
-## run app
-`streamlit run app.py`
+### Activate Virtual Environment
+```bash
+source .venv/bin/activate
+```
+
+### Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Run the App
+```bash
+streamlit run app.py
+```
