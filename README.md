@@ -1,6 +1,5 @@
-# AI Agent: Network Operations and Troubleshooting (MacOS)
 
-Showcasing a minimal example of an ai agent with some net-ops related tools. Using Langchain with OpenAI as a provider
+![AI Agent Screenshot](screenshots/1.png)
 
 ## Prerequisites
 

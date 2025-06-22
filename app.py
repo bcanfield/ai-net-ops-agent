@@ -21,7 +21,7 @@ SYSTEM_PROMPT = (
 )
 
 st.title("AI Net Ops Agent")
-st.markdown("#### AI agent showcasing network operations and troubleshooting")
+st.markdown("#### AI agent showcasing network operations and troubleshooting (MacOS)")
 
 # Showcase example questions for net-admin use cases
 showcase_questions = [
