@@ -2,15 +2,41 @@ import os
 from dotenv import load_dotenv
 
 import streamlit as st
-from langchain_core.messages import AIMessage, HumanMessage
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 import asyncio
 
 from astream_events_handler import invoke_our_graph   # Utility function to handle events from astream_events from graph
 
 load_dotenv()
 
-st.title("StreamLit 🤝 LangGraph")
-st.markdown("#### Chat Streaming and Tool Calling using Astream Events")
+# System-level instructions to drive tool chaining
+SYSTEM_PROMPT = (
+    "You are a network-operations assistant with a full toolbox: interface discovery, stats, pings, "
+    "port scanning, DNS, traceroute, MAC lookup, public-IP, plus general web search. "
+    "When a user asks a broad network-troubleshooting question, proactively select and chain the "
+    "relevant tools in the logical order needed to diagnose or inventory their network. "
+    "Explain your plan, execute the tools, then summarize the results. "
+    "Do not use placeholder values like [key service IP] or [hostname]; always extract actual values from the user query or ask for clarification if missing. "
+    "If the user refers to abstract terms (e.g., 'key services', 'our servers') and you cannot resolve them to real hostnames or IPs, ask the user to specify the exact targets before running any tools."
+)
+
+st.title("AI Net Ops Agent")
+st.markdown("#### AI agent showcasing network operations and troubleshooting")
+
+# Showcase example questions for net-admin use cases
+st.markdown("### Example Prompts to try out:")
+showcase_questions = [
+    # Full diagnostic drive a full tool chain
+    "Run a comprehensive network diagnostic: list all interfaces with their IPs and MACs, get stats for each interface.",
+    # Ambiguous prompt to demonstrate follow-up clarification
+    "I’m seeing high latency to our key services—investigate and summarize what you find.",
+    # Specific web server troubleshooting
+    "I can’t reach my web server. Figure out why and suggest next steps.",
+    # Audit connectivity to multiple targets including private gateway
+    "Audit connectivity to my multiple web servers",
+]
+for q in showcase_questions:
+    st.markdown(f"- **{q}**")
 
 # Initialize the expander state
 if "expander_open" not in st.session_state:
@@ -46,7 +72,8 @@ with st.expander(label="Simple Chat Streaming and Tool Calling using LangGraph's
 
 # Initialize chat messages in session state
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [AIMessage(content="How can I help you?")]
+    # prepend system prompt for autonomous tool chaining
+    st.session_state["messages"] = [SystemMessage(content=SYSTEM_PROMPT), AIMessage(content="How can I help you?")]
 
 # Loop through all messages in the session state and render them as a chat on every st.refresh mech
 for msg in st.session_state.messages:

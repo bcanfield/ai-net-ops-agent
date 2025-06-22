@@ -43,6 +43,7 @@ marshmallow==3.26.1
 multidict==6.5.0
 mypy_extensions==1.1.0
 narwhals==1.43.1
+netifaces==0.11.0
 numpy==2.3.1
 openai==1.90.0
 orjson==3.10.18
@@ -53,6 +54,7 @@ pillow==11.2.1
 primp==0.15.0
 propcache==0.3.2
 protobuf==6.31.1
+psutil==7.0.0
 pyarrow==20.0.0
 pydantic==2.11.7
 pydantic-settings==2.10.0
