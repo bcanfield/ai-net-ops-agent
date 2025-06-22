@@ -24,7 +24,6 @@ st.title("AI Net Ops Agent")
 st.markdown("#### AI agent showcasing network operations and troubleshooting")
 
 # Showcase example questions for net-admin use cases
-st.markdown("### Example Prompts to try out:")
 showcase_questions = [
     # Full diagnostic drive a full tool chain
     "Run a comprehensive network diagnostic: list all interfaces with their IPs and MACs, get stats for each interface.",
@@ -35,8 +34,7 @@ showcase_questions = [
     # Audit connectivity to multiple targets including private gateway
     "Audit connectivity to my multiple web servers",
 ]
-for q in showcase_questions:
-    st.markdown(f"- **{q}**")
+
 
 # Initialize the expander state
 if "expander_open" not in st.session_state:
@@ -61,14 +59,12 @@ if prompt is not None:
     st.session_state.expander_open = False  # Close the expander when the user starts typing
 
 # st write magic
-with st.expander(label="Simple Chat Streaming and Tool Calling using LangGraph's Astream Events", expanded=st.session_state.expander_open):
+with st.expander(label="Example Prompts to Try Out", expanded=st.session_state.expander_open):
     """
-    In this example, we're going to be creating our own events handler to stream our [_LangGraph_](https://langchain-ai.github.io/langgraph/)
-    invocations with via [`astream_events (v2)`](https://langchain-ai.github.io/langgraph/how-tos/streaming-from-final-node/).
-    This one is does not use any callbacks or external streamlit libraries and is asynchronous.
-    we've implemented `on_llm_new_token`, a method that run on every new generation of a token from the ChatLLM model, and
-    `on_tool_start` a method that runs on every tool call invocation even multiple tool calls, and `on_tool_end` giving final result of tool call.
+    Here are some example prompts you can try with the AI Net Ops Agent:
     """
+    for q in showcase_questions:
+        st.markdown(f"- **{q}**")
 
 # Initialize chat messages in session state
 if "messages" not in st.session_state:
