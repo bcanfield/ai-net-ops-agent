@@ -1,3 +1,6 @@
+## About This Repository
+
+This repository demonstrates an AI-agent capable of performing diagnostics, troubleshooting, etc. It is provided a list of tools like interface discovery, ping, traceroute - and will chain any combination of these that it needs to form a response.
 
 ![AI Agent Screenshot](screenshots/1.png)
 
